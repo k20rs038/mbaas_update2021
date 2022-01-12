@@ -111,6 +111,24 @@
     })
     }
 
+  function AlldeleteData() {
+     UTdata.fetch()
+        .then(function(results) {
+          return results.delete();
+          })
+          .then(function(results){
+          $("#display").removeClass();
+          $("#display").addClass("text-light");
+          $("#display").addClass("bg-primary");
+          $("#display").html(msg);
+        })
+        .catch(function(error) {
+          $("#display").removeClass();
+          $("#display").addClass("bg-warning");
+          $("#display").html("delete fail:" + JSON.stringify(error));
+    })
+    }
+
 
   </script>
 </head>
@@ -126,7 +144,7 @@
     <a onclick="sortData()" class="btn btn-outline-secondary" role="button">Sort</a>
     <a onclick="countData()" class="btn btn-outline-secondary" role="button">Count</a>
     <a onclick="deleteData()" class="btn btn-outline-primary" role="buton">Delete</a>
-    <a onclick="AlldeleteData()" class="btn btn-outline-primary" role="buton">Correction</a>
+    <a onclick="AlldeleteData()" class="btn btn-outline-primary" role="buton">Alldelete</a>
   </div>
   <div>
     <input type="text" id="update" placeholder="更新">
